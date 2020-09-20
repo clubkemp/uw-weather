@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/base-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="pure-g">
+        <section class="pure-u-1-5 sidebar">
+            <form class="pure-form">
+                    <h2>Search for a City:</h2>
+                    <input type="text" placeholder="Email" />  
+                    <button type="submit" class="pure-button pure-button-primary"><i class="fas fa-search-location"></i></button>
+            </form>
+            <!-- dynamically create cards here -->
+            <div class="city">
+                <h3>Austin</h3>
+            </div>
+            <div class="city">
+                <h3>chicago</h3>
+                
+            </div>
+            
+        </section>
+
+        <section class="pure-u-4-5">
+            <div class="pure-g">
+                <div class="pure-u">
+                    <div class="title">
+                        <h1>This is a city</h1>
+                        <h1>01/20/2020</h1>
+                        <img class="pure-img"src="http://placekitten.com/20/20" alt="">
+                    </div>
+                    <p>Temperatture:</p>
+                    <p>Humiditiy:</p>
+                    <p>Wind Speed:</p>
+                    <p>UV Index:</p>    
+                </div>
+                
+            </div>
+            <div class="pure-g">
+                <div class="pure-u-1">
+                    <h1>5-day Forecast:</h1>
+                    <div class="card-bucket">
+                        <div class="card">
+                            <h2>2/2/2020</h2>
+                            <img src="http://placekitten.com/20/20" alt="">
+                            <p>Temp:</p>
+                            <p>Humidity:</p>
+                        </div>
+                    </div>   
+                </div>
+            </div>
+        </section><!-- <div class="pure-u-4-5"><p>Thirds</p></div> -->
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>

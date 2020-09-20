@@ -1,0 +1,39 @@
+body{
+    background-color: paleturquoise;
+}
+
+.sidebar {
+    background: grey;
+    height: 100vh
+}
+form {
+    width: 90%;
+    margin: 0px auto 20px auto;
+}
+
+.pure-g{
+    border: 3px solid black;
+}
+
+.title{
+    display: flex;
+}
+
+.city {
+    background: white;
+    width: 90%;
+    display: flex;
+    margin: 0px auto;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.card-bucket{
+    display: flex;
+    justify-content: space-around;
+}
+.card{
+    padding: 1em;
+    background: lightskyblue;
+    border-radius: 5px;
+}
