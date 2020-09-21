@@ -2,7 +2,7 @@
 $(document).ready(function(){
 
     var api = '17a9e463090b33048b8d0e143b013660'
-    var cityName = 'Seattle'
+    var cityName = 'Pheonix'
     var lat
     var long
     $.get(`https://nominatim.openstreetmap.org/?q=${cityName}&format=json&limit=1`, function(response){
@@ -27,5 +27,13 @@ $(document).ready(function(){
 
     function buildCurrentWeather (weather) {
         console.log(weather)
+        for (var prop in weather){
+            console.log(`${prop} : ${weather[prop]}`)
+            var target = $(`span[id=${prop}]`)
+            console.log(target)
+            target.text(weather[prop])
+        }
+        console.log($(".currentWeather"))
+        
     }
 })
