@@ -18,6 +18,9 @@ form {
 .title{
     display: flex;
 }
+.currentWeather h1,span{
+    margin: 0 5px;
+}
 
 .city {
     background: white;
