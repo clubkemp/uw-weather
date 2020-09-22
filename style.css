@@ -1,18 +1,25 @@
 body{
-    background-color: paleturquoise;
+    background-color: white
 }
 
 .sidebar {
-    background: grey;
-    height: 100vh
+    background: #e6e2e2;
+    height: 100vh;
 }
+@media only screen and (max-width: 1024px ){
+    .sidebar {
+        background: #e6e2e2;
+        height:100%;
+    }
+}
+
 form {
     width: 90%;
     margin: 0px auto 20px auto;
 }
 
 .pure-g{
-    border: 3px solid black;
+    
 }
 
 .title{
@@ -27,7 +34,7 @@ form {
     width: 90%;
     display: flex;
     margin: 0px auto;
-    border: 1px solid grey;
+    border: 1px solid #e6e2e2;
     border-radius: 5px;
 }
 
@@ -39,4 +46,19 @@ form {
     padding: 1em;
     background: lightskyblue;
     border-radius: 5px;
+}
+.low{
+    background-color:lightblue;
+}
+.moderate {
+    background-color: yellow;
+}
+.high {
+    background-color: orange;
+}
+.very-high {
+    background-color: red;
+}
+.extreme{
+    background-color: purple;
 }

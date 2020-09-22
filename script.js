@@ -1,35 +1,69 @@
+var api = '17a9e463090b33048b8d0e143b013660'
+//TODO: hook up the form input to set this variable
+var cityName = localStorage.getItem("city")
+var sessionCities = []
+sessionCities.push(cityName)
+//declaring lat and long to be used in the open weather onecall
+var lat
+var long
 
 $(document).ready(function(){
     //declare the open weather API key
-    var api = '17a9e463090b33048b8d0e143b013660'
-    //TODO: hook up the form input to set this variable
-    var cityName = localStorage.getItem("city")
-    //declaring lat and long to be used in the open weather onecall
-    var lat
-    var long
-
     $("button").on("click", function(){
         event.preventDefault()
-        console.log()
         cityName = $("input").val()
         getData();
         localStorage.setItem("city", cityName)
         buildCity(cityName);
     })
+    $(document).on("click",".city", function(){
+        cityName = ($(this).text());
+        getData();
+        localStorage.setItem("city", cityName)
+        buildCity(cityName)
+    })
+    $(document).on("DOMSubtreeModified","#uvi", function(){
+        var uvi = $("#uvi").text()
+        
+        console.log(uvi);
+        if(uvi < 3){
+            $(this).attr("class","low")
+        }
+        else if(uvi >=3 && uvi<=5){
+            $(this).attr("class","moderate")
+        }else if(uvi >5 && uvi<=7){
+            $(this).attr("class","high")
+        }else if (uvi >7 && uvi<=10){
+            $(this).attr("class", "very-high")
+        }else{
+            $(this).attr("class","extreme")
+        }
+    })
 
     function buildCity (city) {
-        var cityDiv = $("<div class='city'>")
-        var nameH3 = $("<h3>")
-        nameH3.text(city)
-        cityDiv.append(nameH3)
-        $(".city-bucket").prepend(cityDiv);
-
-    }
+        function build (city) {
+            var cityDiv = $("<div class='city'>")
+            cityDiv.attr("id", city)
+            var nameH3 = $("<h3>")
+            nameH3.text(city)
+            cityDiv.append(nameH3)
+            $(".city-bucket").prepend(cityDiv);
+        }
+        console.log(city)
+        var firstRun = $(".city-bucket").children().length
+        if(firstRun < 1){
+            build(city);
+        }
+        if ($('#'+city).length){
+            console.log(city)
+            
+        }else{
+            build(city)
+        }
+    };
     //jquery get to nominatim to get lat longs of the city
     function getData () {
-        console.log("hey")
         $.get(`https://nominatim.openstreetmap.org/?q=${cityName}&addressdetails=1&countrycodes=US&format=json&limit=1`, function(response){
-            console.log(response)
             //seting the latitude of the city
             lat = response[0].lat;
             //setting the laongitute of the city
@@ -40,7 +74,6 @@ $(document).ready(function(){
             $.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&
             exclude=hourly,daily&appid=${api}`, function(response){
                 //create a current weather opject to send to the build function
-                console.log(response.current)
                 var currentWeather = {}
                 //city name
                 currentWeather.name = cityName
@@ -72,22 +105,20 @@ $(document).ready(function(){
     
     //function to build the current weather in the DOM
     function buildCurrent (weather) {
-        console.log(weather)
         //iterate over weather, which is an object passed in from our GET request
         for (var prop in weather){
             //now for each object, we need to grab all the DOM elements that are in the current weather section
-            console.log(`${prop} : ${weather[prop]}`)
             //* indicated grabbing all children of .currentWeather
             $(".currentWeather *").each(function(){
                 //So for each child of currentWeather check if the id attr equals our prop
-                if($(this).attr("id") === prop && $(this).attr("id") !== "icon" ){
+                if($(this).attr("id") === prop){
                     //set the text of the elemnt to match up the value from the weather object
                     $(this).text(weather[prop])
-                    //TODO: update the image to be the iconURL
-                }else{
+                }
+                if($(this).attr("id") === "icon" ){
                     $(this).attr("src", weather.icon);
                     $(this).attr("alt", weather.desc);
-                }
+                }   
                 
             })
         }
@@ -97,7 +128,6 @@ $(document).ready(function(){
     function buildForcast (forecast){
         $(".card-bucket").empty();
         forecast.forEach(e => {
-            console.log(e);
 
             var cardDiv = $(`<div class=card >`)
             
@@ -118,7 +148,10 @@ $(document).ready(function(){
             $(".card-bucket").append(cardDiv)
         });          
     }
+    function uviColor (){
+
+    }
+    
     getData();
     buildCity(cityName);
-    
 })
