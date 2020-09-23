@@ -2,51 +2,75 @@ body{
     background-color: white
 }
 
-.sidebar {
-    background: #e6e2e2;
-    height: 100vh;
-}
-@media only screen and (max-width: 1024px ){
-    .sidebar {
-        background: #e6e2e2;
-        height:100%;
-    }
+input{
+    max-width: 90%;
+    height: 2em;
 }
 
 form {
     width: 90%;
-    margin: 0px auto 20px auto;
+    margin-bottom: 10px;
+}
+#icon{
+    height: 50px;
+    width: auto;
+    margin-top: .5em;
 }
 
-.pure-g{
-    
+button{
+    height: 2.3em;
 }
 
-.title{
-    display: flex;
+.sidebar {
+    background: #e6e2e2;
+    height: 100vh;
+}
+.sidebar *{
+    margin-left: 5px;
 }
 .currentWeather h1,span{
-    margin: 0 5px;
+    margin: 10px 5px;
+}
+.main *{
+    margin-left: 5px;
+}
+.title{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.city-bucket{
+    display: flex;
+    /* align-items: center; */
+    flex-wrap: wrap;
+    margin-bottom: 10px;
 }
 
 .city {
+    max-width: 20em;
     background: white;
     width: 90%;
     display: flex;
-    margin: 0px auto;
     border: 1px solid #e6e2e2;
     border-radius: 5px;
+    justify-content: center;
 }
 
 .card-bucket{
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+    padding-bottom: 60px;
+    border-bottom: 1px solid grey;
 }
+
 .card{
     padding: 1em;
+    margin-top: 10px;
     background: lightskyblue;
     border-radius: 5px;
 }
+
 .low{
     background-color:lightblue;
 }
@@ -61,4 +85,15 @@ form {
 }
 .extreme{
     background-color: purple;
+}
+
+@media only screen and (max-width: 1024px ){
+    .sidebar {
+        background: #e6e2e2;
+        height:100%;
+        width: 100%
+    }
+    .city-bucket{
+        justify-content: center;
+    }
 }

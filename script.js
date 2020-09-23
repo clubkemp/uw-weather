@@ -1,8 +1,6 @@
 var api = '17a9e463090b33048b8d0e143b013660'
 //TODO: hook up the form input to set this variable
 var cityName = localStorage.getItem("city")
-var sessionCities = []
-sessionCities.push(cityName)
 //declaring lat and long to be used in the open weather onecall
 var lat
 var long
@@ -95,7 +93,7 @@ $(document).ready(function(){
                 buildCurrent(currentWeather)
                 
                 //setup fiveDay weather by popping off the last 2 peeps
-                var fiveDayWeather = response.daily.slice(0,4)
+                var fiveDayWeather = response.daily.slice(1,6)
                 buildForcast(fiveDayWeather)
             })
             
@@ -122,7 +120,6 @@ $(document).ready(function(){
                 
             })
         }
-        //TODO: build in a class generator for UV index that turns it green yellow or red
     }
 
     function buildForcast (forecast){
@@ -148,10 +145,10 @@ $(document).ready(function(){
             $(".card-bucket").append(cardDiv)
         });          
     }
-    function uviColor (){
-
+    //get the whole process started in at the start of page load
+    if (cityName){
+        getData();
+        buildCity(cityName);
     }
     
-    getData();
-    buildCity(cityName);
 })
