@@ -1,5 +1,6 @@
 body{
-    background-color: white
+    background-color: white;
+    font-family: 'Open Sans', sans-serif;
 }
 
 input{
@@ -33,7 +34,6 @@ button{
     margin-left: 5px;
 }
 
-
 .currentWeather h1,span{
     margin: 10px 5px;
     
@@ -48,6 +48,10 @@ button{
 .title{
     display: flex;
     flex-wrap: wrap;
+}
+.forecast{
+    border-top: 1px solid grey;
+    padding: 30px;
 }
 
 .city-bucket{
